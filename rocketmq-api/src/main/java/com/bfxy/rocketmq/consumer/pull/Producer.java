@@ -8,8 +8,14 @@ import org.apache.rocketmq.common.message.Message;
 import com.bfxy.rocketmq.constants.Const;
  
 public class Producer {
+
+    /**
+     * 普通发送消息
+     * @param args
+     * @throws MQClientException
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws MQClientException, InterruptedException {
-    	
     	String group_name = "test_pull_producer_name";
         DefaultMQProducer producer = new DefaultMQProducer(group_name);
         producer.setNamesrvAddr(Const.NAMESRV_ADDR_MASTER_SLAVE);

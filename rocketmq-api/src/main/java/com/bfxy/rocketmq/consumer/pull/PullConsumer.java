@@ -33,16 +33,20 @@ public class PullConsumer {
             
             SINGLE_MQ: while (true) {
                 try {
-                	//	从queue中获取数据，从什么位置开始拉取数据 单次对多拉取32条记录
+                	//	从queue中获取数据，从什么位置开始拉取数据 单次对多拉取32条记录（没数据就阻塞）
                     PullResult pullResult = consumer.pullBlockIfNotFound(mq, null, getMessageQueueOffset(mq), 32);
                     System.out.println(pullResult);
                     System.out.println(pullResult.getPullStatus());
                     System.out.println();
+                    //修改位置下标
                     putMessageQueueOffset(mq, pullResult.getNextBeginOffset());
+                    //获取当前拉取状态
                     switch (pullResult.getPullStatus()) {
 	                    case FOUND:
+	                        //获取发现的数组
 	                    	List<MessageExt> list = pullResult.getMsgFoundList();
 	                    	for(MessageExt msg : list){
+	                    	    //打印数据
 	                    		System.out.println(new String(msg.getBody()));
 	                    	}
 	                        break;

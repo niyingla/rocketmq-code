@@ -27,21 +27,25 @@ public class PullScheduleService {
         scheduleService.setMessageModel(MessageModel.CLUSTERING);
         
         scheduleService.registerPullTaskCallback("test_pull_topic", new PullTaskCallback() {
- 
+
             @Override
             public void doPullTask(MessageQueue mq, PullTaskContext context) {
+                //获取pull（拉） 消费对象
                 MQPullConsumer consumer = context.getPullConsumer();
                 System.err.println("-------------- queueId: " + mq.getQueueId()  + "-------------");
                 try {
                     // 获取从哪里拉取
                     long offset = consumer.fetchConsumeOffset(mq, false);
-                    if (offset < 0)
+                    if (offset < 0){
                         offset = 0;
- 
+                    }
+                    //从offset拉取数据
                     PullResult pullResult = consumer.pull(mq, "*", offset, 32);
                     switch (pullResult.getPullStatus()) {
                     case FOUND:
+                        //获取消息列表
                     	List<MessageExt> list = pullResult.getMsgFoundList();
+                    	//循环数据
                     	for(MessageExt msg : list){
                     		//消费数据...
                     		System.out.println(new String(msg.getBody()));
@@ -55,10 +59,10 @@ public class PullScheduleService {
                     default:
                         break;
                     }
+                    //移动mq队列消费下标 到下一个位置
                     consumer.updateConsumeOffset(mq, pullResult.getNextBeginOffset());
                     // 设置再过3000ms后重新拉取
                     context.setPullNextDelayTimeMillis(3000);
-          
                 }
                 catch (Exception e) {
                     e.printStackTrace();
