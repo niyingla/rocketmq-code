@@ -18,6 +18,7 @@ public class Consumer2 {
 			String group_name = "test_model_consumer_name2";
 			DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group_name);
 			consumer.setNamesrvAddr(Const.NAMESRV_ADDR_MASTER_SLAVE);
+			//多个tag 消费 tagA||tagB
 			consumer.subscribe("test_model_topic2", "TagB");
 			//consumer.setMessageModel(MessageModel.CLUSTERING);
 			consumer.setMessageModel(MessageModel.BROADCASTING);

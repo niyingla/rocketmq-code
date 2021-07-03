@@ -41,12 +41,14 @@ public class PkgOrderlyConsumer {
 		this.consumer.setMessageListener(new PkgOrderlyListener());
 		this.consumer.start();
 	}
-	
+
+	/**
+	 * 顺序消息 实现
+	 */
 	class PkgOrderlyListener implements MessageListenerOrderly {
 		
 		Random random = new Random();
 		
-		@Override
 		public ConsumeOrderlyStatus consumeMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
 			
 			for(MessageExt msg: msgs) {

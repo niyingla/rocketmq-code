@@ -15,6 +15,7 @@ public class Consumer1 {
 
 	public Consumer1() {
 		try {
+			//消费者组名称相同 能组成一个集群
 			String group_name = "test_model_consumer_name1";
 			DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group_name);
 			consumer.setNamesrvAddr(Const.NAMESRV_ADDR_MASTER_SLAVE);

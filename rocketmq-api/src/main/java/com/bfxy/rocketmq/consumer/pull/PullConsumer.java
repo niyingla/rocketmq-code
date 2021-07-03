@@ -15,6 +15,9 @@ import com.bfxy.rocketmq.constants.Const;
  
 
 public class PullConsumer {
+    /**
+     * 一个topic 下默认挂四个队列
+     */
 	//Map<key, value>  key为指定的队列，value为这个队列拉取数据的最后位置
     private static final Map<MessageQueue, Long> offseTable = new HashMap<MessageQueue, Long>();
  
