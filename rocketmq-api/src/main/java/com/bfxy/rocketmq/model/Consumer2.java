@@ -16,6 +16,9 @@ public class Consumer2 {
 	public Consumer2() {
 		try {
 			String group_name = "test_model_consumer_name2";
+			/**
+			 * 长轮训 发请求拉取消息 没消息阻塞 默认15s
+			 */
 			DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(group_name);
 			consumer.setNamesrvAddr(Const.NAMESRV_ADDR_MASTER_SLAVE);
 			//多个tag 消费 tagA||tagB
@@ -31,6 +34,8 @@ public class Consumer2 {
 	
 	
 	class Listener implements MessageListenerConcurrently {
+
+		@Override
 		public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
 			try {
 				for(MessageExt msg : msgs){

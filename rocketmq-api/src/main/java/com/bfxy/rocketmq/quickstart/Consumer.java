@@ -41,7 +41,7 @@ public class Consumer {
 		//消息非配策略 默认平均
 		//consumer.setAllocateMessageQueueStrategy();
 		//LocalFileOffsetStore 和RemoteBrokerOffsetStore
-		//设置标记点
+		//设置标记点（消费进度 ） offset可以定位到某一条消息
 		//consumer.offsetStore()
 		//调整线程数
 		//consumer.setConsumeThreadMax() consumer.setConsumeThreadMin()
@@ -57,7 +57,7 @@ public class Consumer {
 		//consumer.setConsumeMessageBatchMaxSize();
 		//最大重复消费次数
 		//consumer.setMaxReconsumeTimes();
-		//CLUSTERING 集群 BROADCASTING 广播  广播下消息会被每一个consumer消费
+		//CLUSTERING 集群 offset存在broke BROADCASTING 广播 offset存在本地  广播下消息会被每一个consumer消费 pull方式也存在本地
 		//consumer.setMessageModel();
 
 		//注册消息监听处理 也可以MessageListenerOrderly 顺序消费

@@ -19,13 +19,13 @@ public class PullScheduleService {
     public static void main(String[] args) throws MQClientException {
     	
     	String group_name = "test_pull_consumer_name";
-    	
+    	//定时拉取consumer 可以弥补普通pull存储offset在本地的缺陷
         final MQPullConsumerScheduleService scheduleService = new MQPullConsumerScheduleService(group_name);
         
         scheduleService.getDefaultMQPullConsumer().setNamesrvAddr(Const.NAMESRV_ADDR_MASTER_SLAVE);
-        
+
         scheduleService.setMessageModel(MessageModel.CLUSTERING);
-        
+        //注册定时拉取回调函数
         scheduleService.registerPullTaskCallback("test_pull_topic", new PullTaskCallback() {
 
             @Override

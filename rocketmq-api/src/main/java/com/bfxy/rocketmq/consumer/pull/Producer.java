@@ -44,7 +44,8 @@ public class Producer {
         //最大消息限制 默认128k
 //        producer.setMaxMessageSize();
         producer.start();
- 
+
+        //1 s发一次 一共发十次
         for (int i = 0; i < 10; i++) {
             try {
                 Message msg = new Message("test_pull_topic",// topic
