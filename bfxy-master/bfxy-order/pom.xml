@@ -5,9 +5,13 @@
     <artifactId>bfxy-master</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>bfxy-order</artifactId>
-  
-  <dependencies>
+
+	<groupId>com.bfxy</groupId>
+	<artifactId>bfxy-order</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

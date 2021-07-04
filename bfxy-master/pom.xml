@@ -18,6 +18,15 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
+	<modules>
+		<module>bfxy-order</module>
+		<module>bfxy-store</module>
+		<module>bfxy-pay-a</module>
+		<module>bfxy-pay-b</module>
+		<module>bfxy-pkg</module>
+		<module>bfxy-store-api</module>
+	</modules>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
@@ -36,15 +45,15 @@
         <fasterxml.uuid.version>3.1.4</fasterxml.uuid.version>
         <github.miemiedev.version>1.2.17</github.miemiedev.version>
         <common.codec.version>1.10</common.codec.version>
-        <servlet-api.version>3.1.0</servlet-api.version> 
+        <servlet-api.version>3.1.0</servlet-api.version>
         <kaptcha.version>2.3.2</kaptcha.version>
         <org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
         <poi-ooxml.version>3.9</poi-ooxml.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
-        <pinyin4j.version>2.5.1</pinyin4j.version>		
+        <pinyin4j.version>2.5.1</pinyin4j.version>
         <log4j.version>1.2.17</log4j.version>
         <dubbo.version>0.2.0</dubbo.version>
-        <hystrix.version>1.5.12</hystrix.version>	
+        <hystrix.version>1.5.12</hystrix.version>
         <rocketmq.version>4.3.0</rocketmq.version>
 	</properties>
 
@@ -61,6 +70,7 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<plugins>
 			<plugin>
@@ -69,13 +79,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
-	<modules>
-		<module>bfxy-order</module>
-		<module>bfxy-store</module>
-		<module>bfxy-pay-a</module>
-		<module>bfxy-pay-b</module>
-		<module>bfxy-pkg</module>
-	</modules>
 </project>

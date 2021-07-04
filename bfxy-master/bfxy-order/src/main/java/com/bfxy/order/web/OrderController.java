@@ -15,7 +15,7 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 	
-	//	超时降级
+//	//	超时降级
 //	@HystrixCommand(
 //				commandKey = "createOrder",
 //				commandProperties = {
@@ -25,23 +25,23 @@ public class OrderController {
 //				fallbackMethod = "createOrderFallbackMethod4Timeout"
 //			)
 	
-	//	限流策略：线程池方式
-//	@HystrixCommand(
-//				commandKey = "createOrder",
-//				commandProperties = {
-//						@HystrixProperty(name="execution.isolation.strategy", value="THREAD")
-//				},
-//				threadPoolKey = "createOrderThreadPool",
-//				threadPoolProperties = {
-//						@HystrixProperty(name="coreSize", value="10"),
-//						@HystrixProperty(name="maxQueueSize", value="20000"),
-//						@HystrixProperty(name="queueSizeRejectionThreshold", value="30")
-//				},
-//				fallbackMethod="createOrderFallbackMethod4Thread"
-//			)
+	// 限流策略：线程池方式
+	@HystrixCommand(
+				commandKey = "createOrder",
+				commandProperties = {
+						@HystrixProperty(name="execution.isolation.strategy", value="THREAD")
+				},
+				threadPoolKey = "createOrderThreadPool",
+				threadPoolProperties = {
+						@HystrixProperty(name="coreSize", value="10"),
+						@HystrixProperty(name="maxQueueSize", value="20000"),
+						@HystrixProperty(name="queueSizeRejectionThreshold", value="30")
+				},
+				fallbackMethod="createOrderFallbackMethod4Thread"
+			)
 	
-	//	限流策略：信号量方式
-	
+//	//	限流策略：信号量方式
+//
 //	@HystrixCommand(
 //				commandKey="createOrder",
 //				commandProperties= {

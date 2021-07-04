@@ -17,15 +17,13 @@ public class StoreServiceProvider implements StoreServiceApi {
 
 	@Autowired
 	private StoreMapper storeMapper;
-	
 	@Override
 	public int selectVersion(String supplierId, String goodsId) {
 		return storeMapper.selectVersion(supplierId, goodsId);
 	}
 
 	@Override
-	public int updateStoreCountByVersion(int version, String supplierId, String goodsId, String updateBy,
-			Date updateTime) {
+	public int updateStoreCountByVersion(int version, String supplierId, String goodsId, String updateBy, Date updateTime) {
 		return storeMapper.updateStoreCountByVersion(version, supplierId, goodsId, updateBy, updateTime);
 	}
 
