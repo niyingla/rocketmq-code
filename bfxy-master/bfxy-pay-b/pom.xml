@@ -5,10 +5,7 @@
     <artifactId>bfxy-master</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>bfxy-payb</artifactId>
-	<groupId>com.bfxy</groupId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+  	<artifactId>bfxy-payb</artifactId>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

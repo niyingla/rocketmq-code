@@ -7,11 +7,7 @@
   </parent>
 
     <artifactId>bfxy-store-api</artifactId>
-    <groupId>com.bfxy</groupId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
   <dependencies>
-
   </dependencies>
 	<build>
 		<finalName>bfxy-api</finalName>

@@ -6,10 +6,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-	<groupId>com.bfxy</groupId>
 	<artifactId>bfxy-order</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
 
 	<dependencies>
 		<dependency>

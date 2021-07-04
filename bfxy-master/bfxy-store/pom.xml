@@ -6,18 +6,15 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>bfxy-store</artifactId>
-	<groupId>com.bfxy</groupId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency> 
+		</dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>		
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
@@ -36,7 +33,7 @@
 		    <groupId>log4j</groupId>
 		    <artifactId>log4j</artifactId>
 		    <version>${log4j.version}</version>
-		</dependency> 	    	
+		</dependency>
 		<dependency>
 		    <groupId>com.alibaba</groupId>
 		    <artifactId>druid</artifactId>
@@ -46,7 +43,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-        <!-- dubbo -->  
+        <!-- dubbo -->
     	<dependency>
 		    <groupId>com.alibaba.boot</groupId>
 		    <artifactId>dubbo-spring-boot-starter</artifactId>
@@ -56,31 +53,31 @@
             <groupId>com.alibaba.boot</groupId>
             <artifactId>dubbo-spring-boot-actuator</artifactId>
             <version>${dubbo.version}</version>
-        </dependency>		
+        </dependency>
 		<dependency>
 			  <groupId>com.bfxy</groupId>
 			  <artifactId>bfxy-store-api</artifactId>
-			  <version>0.0.1-SNAPSHOT</version>		
+			  <version>0.0.1-SNAPSHOT</version>
 		</dependency>
   </dependencies>
-  
+
 	<build>
 		<finalName>bfxy-store</finalName>
     	<!-- 打包时包含properties、xml -->
     	<resources>
-             <resource>  
-                <directory>src/main/java</directory>  
-                <includes>  
-                    <include>**/*.properties</include>  
-                    <include>**/*.xml</include>  
-                </includes>  
-                <!-- 是否替换资源中的属性-->  
-                <filtering>true</filtering>  
-            </resource>  
-            <resource>  
-                <directory>src/main/resources</directory>  
-            </resource>      	
-    	</resources>		
+             <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <!-- 是否替换资源中的属性-->
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+    	</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -98,6 +95,6 @@
                 </configuration>
             </plugin>
         </plugins>
-	</build>   
+	</build>
   
 </project>
