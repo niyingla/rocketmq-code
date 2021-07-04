@@ -18,7 +18,7 @@ import com.bfxy.order.mapper.OrderMapper;
 import com.bfxy.order.service.OrderService;
 import com.bfxy.order.service.producer.OrderlyProducer;
 import com.bfxy.order.utils.FastJsonConvertUtil;
-import com.bfxy.store.api.StoreServiceApi;
+import com.bfxy.store.service.StoreServiceApi;
 
 @Service
 public class OrderServiceImpl implements OrderService {

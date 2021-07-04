@@ -1,7 +1,8 @@
 package com.bfxy.store.service.provider;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.bfxy.store.api.HelloServiceApi;
+import com.bfxy.store.service.HelloServiceApi;
+
 @Service(
         version = "1.0.0",
         application = "${dubbo.application.id}",

@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.bfxy.store.api.StoreServiceApi;
+import com.bfxy.store.service.StoreServiceApi;
 import com.bfxy.store.mapper.StoreMapper;
 @Service(
         version = "1.0.0",

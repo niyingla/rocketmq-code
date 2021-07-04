@@ -1,11 +1,11 @@
 package com.bfxy.order.web;
 
+import com.bfxy.store.service.HelloServiceApi;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.bfxy.store.api.HelloServiceApi;
 
 @RestController
 public class HelloController {
