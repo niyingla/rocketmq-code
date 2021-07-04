@@ -29,7 +29,9 @@ public class TransactionProducer implements InitializingBean {
 	private static final String PRODUCER_GROUP_NAME = "tx_pay_producer_group_name";
 	
 	private TransactionProducer() {
+		//事务消息生产者
 		this.producer = new TransactionMQProducer(PRODUCER_GROUP_NAME);
+		//手动创建线程池
 		this.executorService = new ThreadPoolExecutor(2, 5, 100, TimeUnit.SECONDS,
 				new ArrayBlockingQueue<Runnable>(2000), new ThreadFactory() {
 					@Override
@@ -43,6 +45,10 @@ public class TransactionProducer implements InitializingBean {
 		this.producer.setNamesrvAddr(NAMESERVER);
 	}
 
+	/**
+	 * 初始化后执行
+	 * @throws Exception
+	 */
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		this.producer.setTransactionListener(transactionListenerImpl);
@@ -60,7 +66,13 @@ public class TransactionProducer implements InitializingBean {
 	public void shutdown() {
 		this.producer.shutdown();
 	}
-	
+
+	/**
+	 * 发送事务消息方法
+	 * @param message
+	 * @param argument
+	 * @return
+	 */
 	public TransactionSendResult sendMessage(Message message, Object argument) {
 		TransactionSendResult sendResult = null;
 		try {

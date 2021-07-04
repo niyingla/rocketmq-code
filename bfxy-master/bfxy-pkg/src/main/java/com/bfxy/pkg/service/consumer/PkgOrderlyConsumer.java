@@ -48,9 +48,10 @@ public class PkgOrderlyConsumer {
 	class PkgOrderlyListener implements MessageListenerOrderly {
 		
 		Random random = new Random();
-		
+
+		@Override
 		public ConsumeOrderlyStatus consumeMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
-			
+			//前面发送的两个消息 这里循环消费
 			for(MessageExt msg: msgs) {
 				try {
 					String topic = msg.getTopic();

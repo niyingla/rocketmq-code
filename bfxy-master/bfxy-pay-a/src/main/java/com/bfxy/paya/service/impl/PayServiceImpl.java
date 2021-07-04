@@ -79,9 +79,9 @@ public class PayServiceImpl implements PayService {
 				//	同步阻塞
 				CountDownLatch countDownLatch = new CountDownLatch(1);
 				params.put("currentCountDown", countDownLatch);
-				//	消息发送并且 本地的事务执行
+				//	消息发送并且 本地的事务执行 （包含本地余额修改 成功后commit mq消息）
 				TransactionSendResult sendResult = transactionProducer.sendMessage(message, params);
-			
+				//等待事务消息发送结果
 				countDownLatch.await();
 				
 				if(sendResult.getSendStatus() == SendStatus.SEND_OK 

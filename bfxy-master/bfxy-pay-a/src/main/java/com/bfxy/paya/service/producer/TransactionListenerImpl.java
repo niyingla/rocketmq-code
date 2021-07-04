@@ -18,7 +18,13 @@ public class TransactionListenerImpl implements TransactionListener {
 
 	@Autowired
 	private CustomerAccountMapper customerAccountMapper;
-	
+
+	/**
+	 * 提交本地事务
+	 * @param msg
+	 * @param arg
+	 * @return
+	 */
 	@Override
 	public LocalTransactionState executeLocalTransaction(Message msg, Object arg) {
 		System.err.println("执行本地事务单元------------");
@@ -35,11 +41,14 @@ public class TransactionListenerImpl implements TransactionListener {
 		
 			//updateBalance 传递当前的支付款 数据库操作: 
 			Date currentTime = new Date();
+			//执行本地数据库操作
 			int count = this.customerAccountMapper.updateBalance(accountId, newBalance, currentVersion, currentTime);
+			//执行成功 提交
 			if(count == 1) {
 				currentCountDown.countDown();
 				return LocalTransactionState.COMMIT_MESSAGE;
 			} else {
+				//执行失败回滚
 				currentCountDown.countDown();
 				return LocalTransactionState.ROLLBACK_MESSAGE;
 			}
@@ -51,6 +60,11 @@ public class TransactionListenerImpl implements TransactionListener {
 		
 	}
 
+	/**
+	 * 检查本地事务
+	 * @param msg
+	 * @return
+	 */
 	@Override
 	public LocalTransactionState checkLocalTransaction(MessageExt msg) {
 		// TODO Auto-generated method stub

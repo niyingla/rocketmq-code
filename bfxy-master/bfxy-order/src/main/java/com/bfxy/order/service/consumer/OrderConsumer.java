@@ -38,6 +38,7 @@ public class OrderConsumer {
 	private OrderService orderService;
 	
 	public OrderConsumer() throws MQClientException {
+		//初始化消费者信息
 		consumer = new DefaultMQPushConsumer("callback_pay_consumer_group");
         consumer.setConsumeThreadMin(10);
         consumer.setConsumeThreadMax(50);
@@ -72,6 +73,7 @@ public class OrderConsumer {
 				Date currentTime = new Date();
 				
 				if(status.equals(OrderStatus.ORDER_PAYED.getValue())) {
+					//修改订单状态 支付成功
 					int count  = orderMapper.updateOrderStatus(orderId, status, "admin", currentTime);
 					if(count == 1) {
 						orderService.sendOrderlyMessage4Pkg(userId, orderId);
