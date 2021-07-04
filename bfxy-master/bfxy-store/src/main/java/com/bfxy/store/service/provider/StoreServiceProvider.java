@@ -17,6 +17,7 @@ public class StoreServiceProvider implements StoreServiceApi {
 
 	@Autowired
 	private StoreMapper storeMapper;
+
 	@Override
 	public int selectVersion(String supplierId, String goodsId) {
 		return storeMapper.selectVersion(supplierId, goodsId);
