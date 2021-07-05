@@ -20,6 +20,8 @@ public class TransactionListenerImpl implements TransactionListener {
 	private CustomerAccountMapper customerAccountMapper;
 
 	/**
+	 * 初次提交后或确认是状态返回 unknow
+	 * 超时会定时链接product 检查状态然后修正
 	 * 提交本地事务
 	 * @param msg
 	 * @param arg
@@ -61,7 +63,7 @@ public class TransactionListenerImpl implements TransactionListener {
 	}
 
 	/**
-	 * 检查本地事务
+	 * 检查本地事务 用于超时commit
 	 * @param msg
 	 * @return
 	 */

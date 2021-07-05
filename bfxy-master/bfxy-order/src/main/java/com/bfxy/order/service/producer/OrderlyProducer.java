@@ -39,7 +39,13 @@ public class OrderlyProducer {
 	public void shutdown() {
 		this.producer.shutdown();
 	}
-	
+
+	/**
+	 * 顺序消息 需要保证这些消息在一个topic下
+	 * 并且在一个队列里 才能有顺序
+	 * @param messageList
+	 * @param messageQueueNumber
+	 */
 	public void sendOrderlyMessages(List<Message> messageList, int messageQueueNumber) {
 		for(Message me : messageList) {
 			try {

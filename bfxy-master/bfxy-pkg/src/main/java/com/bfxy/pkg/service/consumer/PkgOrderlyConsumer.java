@@ -44,6 +44,7 @@ public class PkgOrderlyConsumer {
 
 	/**
 	 * 顺序消息 实现
+	 * 实现局部顺序 消费者需要单线程消费
 	 */
 	class PkgOrderlyListener implements MessageListenerOrderly {
 		
