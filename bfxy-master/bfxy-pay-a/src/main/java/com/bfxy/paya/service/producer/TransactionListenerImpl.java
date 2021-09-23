@@ -26,6 +26,9 @@ public class TransactionListenerImpl implements TransactionListener {
 	 * @param msg
 	 * @param arg
 	 * @return
+	 *
+	 * 注 发送玩事务消息后 （服务器 ）状态为 unknow 等本方法同步确认消息状态 （回滚、提交、unknow）
+	 * 当为unknow 后续会回调检查状态方法checkLocalTransaction
 	 */
 	@Override
 	public LocalTransactionState executeLocalTransaction(Message msg, Object arg) {

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TransactionProducer implements InitializingBean {
 
+	//事务消息生产对象
 	private TransactionMQProducer producer;
 	
 	private ExecutorService executorService;
@@ -51,10 +52,14 @@ public class TransactionProducer implements InitializingBean {
 	 */
 	@Override
 	public void afterPropertiesSet() throws Exception {
+		//初始化 设置事务消息提交监听者
 		this.producer.setTransactionListener(transactionListenerImpl);
 		start();
 	}
 
+	/**
+	 * 启动事务消息生产客户端
+	 */
 	private void start() {
 		try {
 			this.producer.start();
@@ -76,6 +81,7 @@ public class TransactionProducer implements InitializingBean {
 	public TransactionSendResult sendMessage(Message message, Object argument) {
 		TransactionSendResult sendResult = null;
 		try {
+			//调用之前设置好的事务消息生产者发送事务消息
 			sendResult = this.producer.sendMessageInTransaction(message, argument);
 		} catch (Exception e) {
 			e.printStackTrace();
