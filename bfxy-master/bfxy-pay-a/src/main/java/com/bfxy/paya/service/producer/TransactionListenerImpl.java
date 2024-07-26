@@ -1,10 +1,6 @@
 package com.bfxy.paya.service.producer;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-
+import com.bfxy.paya.mapper.CustomerAccountMapper;
 import org.apache.rocketmq.client.producer.LocalTransactionState;
 import org.apache.rocketmq.client.producer.TransactionListener;
 import org.apache.rocketmq.common.message.Message;
@@ -12,7 +8,10 @@ import org.apache.rocketmq.common.message.MessageExt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.bfxy.paya.mapper.CustomerAccountMapper;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 @Component
 public class TransactionListenerImpl implements TransactionListener {
 
@@ -43,8 +42,8 @@ public class TransactionListenerImpl implements TransactionListener {
 			BigDecimal newBalance = (BigDecimal)params.get("newBalance");	//	前置扣款成功的余额
 			int currentVersion = (int)params.get("currentVersion");
 			currentCountDown = (CountDownLatch)params.get("currentCountDown");
-		
-			//updateBalance 传递当前的支付款 数据库操作: 
+
+			//updateBalance 传递当前的支付款 数据库操作:
 			Date currentTime = new Date();
 			//执行本地数据库操作
 			int count = this.customerAccountMapper.updateBalance(accountId, newBalance, currentVersion, currentTime);
@@ -62,7 +61,7 @@ public class TransactionListenerImpl implements TransactionListener {
 			currentCountDown.countDown();
 			return LocalTransactionState.ROLLBACK_MESSAGE;
 		}
-		
+
 	}
 
 	/**
